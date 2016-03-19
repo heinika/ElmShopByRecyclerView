@@ -57,17 +57,17 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         teamsAndHeaderAdapter = new TeamsAndHeaderAdapter(this,categoryList);
         recyclerviewTeams.setAdapter(teamsAndHeaderAdapter);
 
-        // Add the sticky headers decoration
+        // Add the sticky headers decoration,给球队添加标题
         final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(teamsAndHeaderAdapter);
         recyclerviewTeams.addItemDecoration(headersDecor);
 
         recyclerviewTeams.setOnScrollChangeListener(new View.OnScrollChangeListener() {
             @Override
             public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-
+                //第一个完全显示的item和最后一个item。
                 int firstVisibleItem = mTeamsLayoutManager.findFirstCompletelyVisibleItemPosition();
                 int lastVisibleItem = mTeamsLayoutManager.findLastVisibleItemPosition();
-                //次判断，避免左侧点击最后一个item无响应
+                //此判断，避免左侧点击最后一个item无响应
                 if(lastVisibleItem != mTeamsLayoutManager.getItemCount()-1){
                     int sort = teamsAndHeaderAdapter.getSortType(firstVisibleItem);
                     changeSelected(sort);
