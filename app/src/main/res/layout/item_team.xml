@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    >
+
+    <ImageView
+        android:id="@+id/imageview_team"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="5dp"
+        />
+
+    <LinearLayout
+        android:id="@+id/goodsInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/imageview_team"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textview_teamname"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="多特蒙德"
+                android:textSize="16sp" />
+
+            <TextView
+                android:id="@+id/tvGoodsSales"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="15dp"
+                android:text="销量：0"
+                android:textColor="#BBBBBB"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvGoodsDescription"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:maxLines="2"
+            android:text="来自长白山的深层岩水"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/goodsInfo"
+        android:layout_marginLeft="15dp"
+        android:layout_toRightOf="@id/imageview_team"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvGoodsPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="¥10.00"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:id="@+id/imageview_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/icon_goods_button_minus_gray"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/textview_number"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
+                android:text=""
+                android:textSize="20sp"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/imageview_add_goods"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:background="@drawable/icon_goods_button_add" />
+        </LinearLayout>
+    </LinearLayout>
+
+</RelativeLayout>
