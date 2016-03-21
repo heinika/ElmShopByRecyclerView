@@ -82,10 +82,10 @@ public class TeamsAndHeaderAdapter extends RecyclerView.Adapter<RecyclerView.Vie
      * ===================================================================================================
      */
     @Override
-    public ContentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_team, parent, false);
-        return new ContentViewHolder(view);
+    public HeaderViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {
+        View view = LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.header_team_list, viewGroup, false);
+        return new HeaderViewHolder(view);
     }
 
     @Override
@@ -115,9 +115,9 @@ public class TeamsAndHeaderAdapter extends RecyclerView.Adapter<RecyclerView.Vie
      * ==================================================================================================
      */
     @Override
-    public ContentViewHolder onCreateHeaderViewHolder(ViewGroup viewGroup) {
-        View view = LayoutInflater.from(viewGroup.getContext())
-                .inflate(R.layout.header_team_list, viewGroup, false);
+    public ContentViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+        View view = LayoutInflater.from(parent.getContext())
+                .inflate(R.layout.item_team, parent, false);
         return new ContentViewHolder(view);
     }
 
