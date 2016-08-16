@@ -1,7 +1,7 @@
 
 先看一下效果图：
 
-![效果图](http://upload-images.jianshu.io/upload_images/759172-50727758fcf7853c.gif?imageMogr2/auto-orient/strip)
+![效果图](http://upload-images.jianshu.io/upload_images/759172-70151f483c6445e1.gif?imageMogr2/auto-orient/strip)
 
 左边就是一个普通的recyclerView，右边则需要一个有标题的recyclerView。
 
