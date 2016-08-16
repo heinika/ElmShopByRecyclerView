@@ -88,14 +88,6 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
                 }
             }
         });
-
-        recyclerviewCategory.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                int lastVisibleItem = mCategoryLayoutManager.findLastVisibleItemPosition();
-
-            }
-        });
     }
 
     private boolean needMove=false;

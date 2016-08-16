@@ -7,5 +7,4 @@
 /build
 /captures
 .idea/misc.xml
-.idea/misc.xml
-.idea/misc.xml
+将删除 .idea/vcs.xml
