@@ -33,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
     private TeamsAndHeaderAdapter teamsAndHeaderAdapter;
     private int oldSelectedPosition = 0;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -87,6 +88,14 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
                 }
             }
         });
+
+        recyclerviewCategory.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+            @Override
+            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                int lastVisibleItem = mCategoryLayoutManager.findLastVisibleItemPosition();
+
+            }
+        });
     }
 
     private boolean needMove=false;
@@ -129,6 +138,8 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
     private void changeSelected(int position) {
         categoryList.get(oldSelectedPosition).setSeleted(false);
         categoryList.get(position).setSeleted(true);
+        //增加左侧联动
+        recyclerviewCategory.scrollToPosition(position);
         oldSelectedPosition = position;
         categoryAdapter.notifyDataSetChanged();
     }
@@ -173,12 +184,32 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         teamList4.add(new Team("曼城","http://www.sinaimg.cn/lf/sports/logo85/216.png"));
         teamList4.add(new Team("切尔西","http://www.sinaimg.cn/lf/sports/logo85/60.png"));
         teamList4.add(new Team("阿森纳","http://www.sinaimg.cn/lf/sports/logo85/61.png"));
-        teamList4.add(new Team("莱斯特成","http://www.sinaimg.cn/lf/sports/logo85/92.png"));;
+        teamList4.add(new Team("莱斯特成","http://www.sinaimg.cn/lf/sports/logo85/92.png"));
         Category c4 = new Category("英超",teamList4);
+
+        List<Team> teamList5 = new ArrayList<>();
+        teamList5.add(new Team("北京国安","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115830.png"));
+        teamList5.add(new Team("广州恒大","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127124548.png"));
+        teamList5.add(new Team("山东鲁能","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115709.png"));
+        teamList5.add(new Team("江苏苏宁","http://www.sinaimg.cn/ty/2016/0108/U6521P6DT20160108153302.png"));
+        teamList5.add(new Team("上海上港","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127122231.png"));
+        Category c5 = new Category("中超",teamList5);
+
 
         categoryList.add(c1);
         categoryList.add(c2);
         categoryList.add(c3);
         categoryList.add(c4);
+        categoryList.add(c5);
+        for (int i=0;i<10;i++){
+            List<Team> teamList = new ArrayList<>();
+            teamList.add(new Team("北京国安","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115830.png"));
+            teamList.add(new Team("广州恒大","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127124548.png"));
+            teamList.add(new Team("山东鲁能","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115709.png"));
+            teamList.add(new Team("江苏苏宁","http://www.sinaimg.cn/ty/2016/0108/U6521P6DT20160108153302.png"));
+            teamList.add(new Team("上海上港","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127122231.png"));
+            Category c = new Category("中超",teamList);
+            categoryList.add(c);
+        }
     }
 }
