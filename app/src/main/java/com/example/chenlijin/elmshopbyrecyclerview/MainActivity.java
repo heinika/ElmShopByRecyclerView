@@ -1,6 +1,5 @@
 package com.example.chenlijin.elmshopbyrecyclerview;
 
-import android.annotation.TargetApi;
 import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
@@ -46,7 +45,7 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
     private LinearLayoutManager mTeamsLayoutManager;
     private LinearLayoutManager mCategoryLayoutManager;
 
-    @TargetApi(Build.VERSION_CODES.M)
+
     private void initViews() {
         mTeamsLayoutManager = new LinearLayoutManager(this);
         mCategoryLayoutManager = new LinearLayoutManager(this);
@@ -62,32 +61,62 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         final StickyRecyclerHeadersDecoration headersDecor = new StickyRecyclerHeadersDecoration(teamsAndHeaderAdapter);
         recyclerviewTeams.addItemDecoration(headersDecor);
 
-        recyclerviewTeams.setOnScrollChangeListener(new View.OnScrollChangeListener() {
-            @Override
-            public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
-                //第一个完全显示的item和最后一个item。
-                int firstVisibleItem = mTeamsLayoutManager.findFirstCompletelyVisibleItemPosition();
-                int lastVisibleItem = mTeamsLayoutManager.findLastVisibleItemPosition();
-                //此判断，避免左侧点击最后一个item无响应
-                if(lastVisibleItem != mTeamsLayoutManager.getItemCount()-1){
-                    int sort = teamsAndHeaderAdapter.getSortType(firstVisibleItem);
-                    changeSelected(sort);
-                }else {
-                    changeSelected(categoryAdapter.getItemCount()-1);
-                }
-                if(needMove){
-                    needMove = false;
-                    //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
-                    int n = movePosition - mTeamsLayoutManager.findFirstVisibleItemPosition();
-                    if ( 0 <= n && n < recyclerviewTeams.getChildCount()){
-                        //获取要置顶的项顶部离RecyclerView顶部的距离
-                        int top = recyclerviewTeams.getChildAt(n).getTop()-dip2px(MainActivity.this,28);
-                        //最后的移动
-                        recyclerviewTeams.scrollBy(0, top);
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            recyclerviewTeams.setOnScrollChangeListener(new View.OnScrollChangeListener() {
+                @Override
+                public void onScrollChange(View v, int scrollX, int scrollY, int oldScrollX, int oldScrollY) {
+                    //第一个完全显示的item和最后一个item。
+                    int firstVisibleItem = mTeamsLayoutManager.findFirstCompletelyVisibleItemPosition();
+                    int lastVisibleItem = mTeamsLayoutManager.findLastVisibleItemPosition();
+                    //此判断，避免左侧点击最后一个item无响应
+                    if(lastVisibleItem != mTeamsLayoutManager.getItemCount()-1){
+                        int sort = teamsAndHeaderAdapter.getSortType(firstVisibleItem);
+                        changeSelected(sort);
+                    }else {
+                        changeSelected(categoryAdapter.getItemCount()-1);
+                    }
+                    if(needMove){
+                        needMove = false;
+                        //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
+                        int n = movePosition - mTeamsLayoutManager.findFirstVisibleItemPosition();
+                        if ( 0 <= n && n < recyclerviewTeams.getChildCount()){
+                            //获取要置顶的项顶部离RecyclerView顶部的距离
+                            int top = recyclerviewTeams.getChildAt(n).getTop()-dip2px(MainActivity.this,28);
+                            //最后的移动
+                            recyclerviewTeams.scrollBy(0, top);
+                        }
                     }
                 }
-            }
-        });
+            });
+        }else {
+            recyclerviewTeams.setOnScrollListener(new RecyclerView.OnScrollListener() {
+                @Override
+                public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+                    super.onScrolled(recyclerView, dx, dy);
+                    //第一个完全显示的item和最后一个item。
+                    int firstVisibleItem = mTeamsLayoutManager.findFirstCompletelyVisibleItemPosition();
+                    int lastVisibleItem = mTeamsLayoutManager.findLastVisibleItemPosition();
+                    //此判断，避免左侧点击最后一个item无响应
+                    if(lastVisibleItem != mTeamsLayoutManager.getItemCount()-1){
+                        int sort = teamsAndHeaderAdapter.getSortType(firstVisibleItem);
+                        changeSelected(sort);
+                    }else {
+                        changeSelected(categoryAdapter.getItemCount()-1);
+                    }
+                    if(needMove){
+                        needMove = false;
+                        //获取要置顶的项在当前屏幕的位置，mIndex是记录的要置顶项在RecyclerView中的位置
+                        int n = movePosition - mTeamsLayoutManager.findFirstVisibleItemPosition();
+                        if ( 0 <= n && n < recyclerviewTeams.getChildCount()){
+                            //获取要置顶的项顶部离RecyclerView顶部的距离
+                            int top = recyclerviewTeams.getChildAt(n).getTop()-dip2px(MainActivity.this,28);
+                            //最后的移动
+                            recyclerviewTeams.scrollBy(0, top);
+                        }
+                    }
+                }
+            });
+        }
     }
 
     private boolean needMove=false;
