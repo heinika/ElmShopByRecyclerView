@@ -1,9 +1,7 @@
-使用两个recyclerview相互关联，实现了类似于饿了吗点菜页的效果。
-具体效果如下：
-<img src="/gif/效果.gif">
+
 先看一下效果图：
 
-![效果图](http://7xre96.com1.z0.glb.clouddn.com/%E9%A5%BF%E4%BA%86%E5%90%97recyclerview.png?imageView2/0/w/700)
+![效果图](http://upload-images.jianshu.io/upload_images/759172-50727758fcf7853c.gif?imageMogr2/auto-orient/strip)
 
 左边就是一个普通的recyclerView，右边则需要一个有标题的recyclerView。
 
@@ -247,7 +245,3 @@ if(needMove){
 ```
 
 到此，左右两端的相互关联就完成了。
-
-原文地址：https://heinika.github.io/2016/03/19/%E7%94%A8RecyclerView%E5%AE%9E%E7%8E%B0%E9%A5%BF%E4%BA%86%E5%90%97%E7%82%B9%E8%8F%9C%E9%A1%B5/
-
-github下载：https://github.com/heinika/ElmShopByRecyclerView
