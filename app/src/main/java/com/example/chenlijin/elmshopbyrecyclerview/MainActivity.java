@@ -17,14 +17,9 @@ import com.timehop.stickyheadersrecyclerview.StickyRecyclerHeadersDecoration;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
 public class MainActivity extends AppCompatActivity implements CategoryAdapter.OnItemClickListener{
 
-    @Bind(R.id.recyclerview_category)
     RecyclerView recyclerviewCategory;
-    @Bind(R.id.recyclerview_teams)
     RecyclerView recyclerviewTeams;
 
     private List<Category> categoryList;
@@ -37,7 +32,8 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        ButterKnife.bind(this);
+        recyclerviewCategory = (RecyclerView) findViewById(R.id.recyclerview_category);
+        recyclerviewTeams = (RecyclerView) findViewById(R.id.recyclerview_teams);
         initData();
         initViews();
     }
@@ -222,15 +218,15 @@ public class MainActivity extends AppCompatActivity implements CategoryAdapter.O
         categoryList.add(c3);
         categoryList.add(c4);
         categoryList.add(c5);
-        for (int i=0;i<10;i++){
-            List<Team> teamList = new ArrayList<>();
-            teamList.add(new Team("北京国安","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115830.png"));
-            teamList.add(new Team("广州恒大","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127124548.png"));
-            teamList.add(new Team("山东鲁能","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115709.png"));
-            teamList.add(new Team("江苏苏宁","http://www.sinaimg.cn/ty/2016/0108/U6521P6DT20160108153302.png"));
-            teamList.add(new Team("上海上港","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127122231.png"));
-            Category c = new Category("中超",teamList);
-            categoryList.add(c);
-        }
+//        for (int i=0;i<10;i++){
+//            List<Team> teamList = new ArrayList<>();
+//            teamList.add(new Team("北京国安","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115830.png"));
+//            teamList.add(new Team("广州恒大","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127124548.png"));
+//            teamList.add(new Team("山东鲁能","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127115709.png"));
+//            teamList.add(new Team("江苏苏宁","http://www.sinaimg.cn/ty/2016/0108/U6521P6DT20160108153302.png"));
+//            teamList.add(new Team("上海上港","http://www.sinaimg.cn/ty/2015/0127/U6521P6DT20150127122231.png"));
+//            Category c = new Category("中超",teamList);
+//            categoryList.add(c);
+//        }
     }
 }
