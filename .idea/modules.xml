@@ -3,9 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/ElmShopByRecyclerView.iml" filepath="$PROJECT_DIR$/ElmShopByRecyclerView.iml" />
-      <module fileurl="file://D:\AndroidProject\GitHub\ElmShopByRecyclerView\ElmShopByRecyclerView.iml" filepath="D:\AndroidProject\GitHub\ElmShopByRecyclerView\ElmShopByRecyclerView.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://D:\AndroidProject\GitHub\ElmShopByRecyclerView\app\app.iml" filepath="D:\AndroidProject\GitHub\ElmShopByRecyclerView\app\app.iml" />
     </modules>
   </component>
 </project>
